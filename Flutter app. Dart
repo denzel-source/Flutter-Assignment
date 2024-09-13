@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,  // Hides the debug banner
+      title: 'Simple Flutter App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Simple App'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Text Widget (Welcome Message)
+              Text(
+                'Welcome to My App!',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              
+              // Spacing between widgets
+              SizedBox(height: 20),
+              
+              // ElevatedButton Widget (Button with click action)
+              ElevatedButton(
+                onPressed: () {
+                  print("Button clicked!");
+                },
+                child: Text('Click Me'),
+              ),
+
+              // Spacing between widgets
+              SizedBox(height: 20),
+              
+              // Image Widget with error handling
+              Image.network(
+                'https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBsYWNlaG9sZGVyfGVufDB8fHx8MTY1MjE0MTEyMA&ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb',  // Valid Unsplash image URL
+                width: 200,
+                height: 200,
+                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                  return Text('Failed to load image');  // Error handling
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
